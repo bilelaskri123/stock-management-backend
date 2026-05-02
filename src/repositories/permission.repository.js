@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const Permission = require("../models/Permission");
 
 class PermissionRepository {
@@ -10,6 +11,24 @@ class PermissionRepository {
       },
     });
     return { permission, created };
+  }
+
+  async findAll() {
+    return await Permission.findAll();
+  }
+
+  async findById(id) {
+    return await Permission.findByPk(id);
+  }
+
+  async findByIds(ids) {
+    return await Permission.findAll({
+      where: {
+        id: {
+          [Op.in]: ids,
+        },
+      },
+    });
   }
 }
 

@@ -1,5 +1,6 @@
 const permissionGroupService = require("../services/permissionGroup.service");
 const permissionService = require("../services/permission.service");
+const roleService = require("../services/role.service");
 const { connectToDB } = require("../config/db");
 
 async function initializeData() {
@@ -7,6 +8,7 @@ async function initializeData() {
     await connectToDB();
     await permissionGroupService.seedPermissionGroups();
     await permissionService.seedPermissions();
+    await roleService.initializeRoles();
     console.log("Initial data seeding completed.");
   } catch (error) {
     console.error("Error initializing data:", error);

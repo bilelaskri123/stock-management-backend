@@ -42,4 +42,6 @@ Permission.belongsToMany(Role, {
   onDelete: "RESTRICT",
 });
 
+Role.sync({ alter: true });
+
 module.exports = Role;
