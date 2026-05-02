@@ -1,0 +1,15 @@
+node_modules
+dist
+build
+coverage
+.env
+.DS_Store
+.idea
+.vscode
+*.log
+*.tsbuildinfo
+# Ignore all files in the src directory except for .ts files
+
+package-lock.json
+
+.env

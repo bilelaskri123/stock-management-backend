@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Create User",
+        "key": "create_user",
+        "groupKey": "user_management"
+    },
+    {
+        "name": "Edit User",
+        "key": "edit_user",
+        "groupKey": "user_management"
+    },
+    {
+        "name": "Delete User",
+        "key": "delete_user",
+        "groupKey": "user_management"
+    },
+    {
+        "name": "View User",
+        "key": "view_user",
+        "groupKey": "user_management"
+    },
+    {
+        "name": "Create Role",
+        "key": "create_role",
+        "groupKey": "role_management"
+    },
+    {
+        "name": "Edit Role",
+        "key": "edit_role",
+        "groupKey": "role_management"
+    },
+    {
+        "name": "Delete Role",
+        "key": "delete_role",
+        "groupKey": "role_management"
+    },
+    {
+        "name": "View Role",
+        "key": "view_role",
+        "groupKey": "role_management"
+    }
+]

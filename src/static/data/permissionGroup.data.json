@@ -1,0 +1,10 @@
+[
+  {
+    "name": "User Management",
+    "key": "user_management"
+  },
+  {
+    "name": "Role Management",
+    "key": "role_management"
+  }
+]
