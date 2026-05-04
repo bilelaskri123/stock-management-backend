@@ -15,7 +15,7 @@ class AuthService {
     }
 
     // generate token (e.g., JWT) and return it along with user info
-    const token = await this.generateToken(user);
+    const token = this.generateToken(user);
 
     return { message: "Login successful", user, token };
   }
