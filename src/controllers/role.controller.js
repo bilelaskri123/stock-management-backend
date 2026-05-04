@@ -3,6 +3,7 @@ const {
   createRoleSchema,
   updateRoleSchema,
 } = require("../validators/role.validator");
+const { z } = require("zod");
 
 class RoleController {
   async getAll(req, res, next) {
@@ -27,13 +28,13 @@ class RoleController {
   async create(req, res, next) {
     try {
       const roleData = req.body;
-      const { error, value } = createRoleSchema.validate(roleData);
-      if (error) {
-        return res
-          .status(400)
-          .json({ success: false, message: error.details[0].message });
+      const { success, error, data } = createRoleSchema.safeParse(roleData);
+
+      if (!success) {
+        const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
+        return res.status(400).json({ success: false, message: message });
       }
-      const newRole = await roleService.createRole(value);
+      const newRole = await roleService.createRole(data);
       res.status(201).json({ success: true, role: newRole });
     } catch (error) {
       next(error);
@@ -44,14 +45,14 @@ class RoleController {
     try {
       const roleId = req.params.id;
       const roleData = req.body;
-      const { error, value } = updateRoleSchema.validate(roleData);
+      const { success, error, data } = updateRoleSchema.safeParse(roleData);
+
       if (error) {
-        return res
-          .status(400)
-          .json({ success: false, message: error.details[0].message });
+        const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
+        return res.status(400).json({ success: false, message: message });
       }
 
-      const updatedRole = await roleService.updateRole(roleId, value);
+      const updatedRole = await roleService.updateRole(roleId, data);
       res.status(200).json({ success: true, role: updatedRole });
     } catch (error) {
       next(error);

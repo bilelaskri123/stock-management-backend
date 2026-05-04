@@ -4,9 +4,8 @@ const createUserSchema = z.object({
   firstName: z.string().min(2).max(50),
   lastName: z.string().min(2).max(50),
   email: z.string().email(),
-  name: z.string().min(2).max(100),
   password: z.string().min(8, "Password must be at least 8 characters long"),
-  role: z.number().optional(),
+  RoleId: z.number(),
   isEnabled: z.boolean().optional(),
 });
 

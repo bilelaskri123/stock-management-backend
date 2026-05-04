@@ -36,6 +36,7 @@ class UserService {
     if (!user) {
       throw new AppError("User not found", 404);
     }
+
     if (userData.email && userData.email !== user.email) {
       const existingUser = await userRepository.findByEmail(userData.email);
       if (existingUser) {

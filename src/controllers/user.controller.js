@@ -27,13 +27,13 @@ class UserController {
 
   async create(req, res, next) {
     try {
-      const { error, value } = createUserSchema.validate(req.body);
-      if (error) {
-        return res
-          .status(400)
-          .json({ success: false, error: error.details[0].message });
+      // use parseSafe to avoid throwing errors and handle them gracefully.
+      const { success, error, data } = createUserSchema.safeParse(req.body);
+      if (!success) {
+        const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
+        return res.status(400).json({ success: false, error: message });
       }
-      const newUser = await userService.createUser(value);
+      const newUser = await userService.createUser(data);
       res.status(201).json({ success: true, user: newUser });
     } catch (error) {
       next(error);
@@ -43,13 +43,14 @@ class UserController {
   async update(req, res, next) {
     try {
       const userId = req.params.id;
-      const { error, value } = updateUserSchema.validate(req.body);
-      if (error) {
-        return res
-          .status(400)
-          .json({ success: false, error: error.details[0].message });
+      console.log(req.body);
+
+      const { success, error, data } = updateUserSchema.safeParse(req.body);
+      if (!success) {
+        const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
+        return res.status(400).json({ success: false, error: message });
       }
-      const updatedUser = await userService.updateUser(userId, value);
+      const updatedUser = await userService.updateUser(userId, data);
       res.status(200).json({ success: true, user: updatedUser });
     } catch (error) {
       next(error);
