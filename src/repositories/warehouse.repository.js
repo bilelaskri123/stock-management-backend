@@ -1,7 +1,7 @@
 const { Op } = require("sequelize");
-const WareHouse = require("../models/Warehouse");
+const Warehouse = require("../models/Warehouse");
 
-class WarehoWareHouseepository {
+class WarehouseRepository {
   async findAll({ page = 1, limit = 10, search = "" }) {
     const offset = (page - 1) * limit;
     const where = search
@@ -13,7 +13,7 @@ class WarehoWareHouseepository {
           ],
         }
       : {};
-    const { count, rows } = await WareHouse.findAndCountAll({
+    const { count, rows } = await Warehouse.findAndCountAll({
       where,
       limit,
       offset,
@@ -28,27 +28,29 @@ class WarehoWareHouseepository {
   }
 
   async findById(id) {
-    return await WareHouse.findByPk(id);
+    return await Warehouse.findByPk(id);
   }
 
-  async create(WareHouseData) {
-    return await WareHouse.create(WareHouseData);
+  async create(WarehouseData) {
+    return await Warehouse.create(WarehouseData);
   }
 
-  async update(id, WareHouseData) {
-    const WareHouse = await WareHouse.findByPk(id);
-    if (!WareHouse) {
-      throw new Error("WareHouse not found");
+  async update(id, WarehouseData) {
+    const Warehouse = await Warehouse.findByPk(id);
+    if (!Warehouse) {
+      throw new Error("Warehouse not found");
     }
-    return await WareHouse.update(WareHouseData);
+    return await Warehouse.update(WarehouseData);
   }
 
   async delete(id) {
-    const WareHouse = await WareHouse.findByPk(id);
-    if (!WareHouse) {
-      throw new Error("WareHouse not found");
+    const Warehouse = await Warehouse.findByPk(id);
+    if (!Warehouse) {
+      throw new Error("Warehouse not found");
     }
-    await WareHouse.destroy();
+    await Warehouse.destroy();
     return true;
   }
 }
+
+module.exports = new WarehouseRepository();
