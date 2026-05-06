@@ -17,12 +17,6 @@ class User extends Model {
   async validatePassword(password) {
     return await bcrypt.compare(password, this.password);
   }
-
-  // Generate JWT token (if needed, can be implemented here or in a separate auth service)
-  // async generateToken() {
-  //   const token = jwt.sign({ id: this.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-  //   return token;
-  // }
 }
 
 User.init(
