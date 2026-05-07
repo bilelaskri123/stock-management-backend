@@ -31,7 +31,6 @@ class SupplierController {
 
   async create(req, res, next) {
     try {
-      // use parseSafe to avoid throwing errors and handle them gracefully.
       const { success, error, data } = createSupplierSchema.safeParse(req.body);
       if (!success) {
         const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
