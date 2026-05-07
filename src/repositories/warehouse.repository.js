@@ -40,13 +40,13 @@ class WarehouseRepository {
     if (!warehouse) {
       throw new Error("Warehouse not found");
     }
-    return await Warehouse.update(WarehouseData);
+    return await warehouse.update(WarehouseData);
   }
 
   async delete(id) {
     const warehouse = await Warehouse.findByPk(id);
     if (!warehouse) {
-      throw new Error("Warehouse not found");
+      return false;
     }
     await Warehouse.destroy();
     return true;

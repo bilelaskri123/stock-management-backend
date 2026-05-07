@@ -32,4 +32,5 @@ Warehouse.init(
   },
 );
 
+// Warehouse.sync();
 module.exports = Warehouse;

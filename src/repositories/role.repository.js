@@ -23,7 +23,7 @@ class RoleRepository {
   async delete(id) {
     const role = await Role.findByPk(id);
     if (!role) {
-      throw new Error("Role not found");
+      return false;
     }
     await role.destroy();
     return true;

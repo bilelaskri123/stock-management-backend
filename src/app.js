@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("../docs/swagger");
 const { notFoundHandler, errorHandler } = require("./middlewares/errors");
 
 const app = express();
@@ -14,6 +16,9 @@ app.use(helmet());
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve API docs at /api-docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Import routes
 const routes = require("./routes");
