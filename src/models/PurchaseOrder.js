@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db");
 const User = require("./User");
+const Supplier = require("./Supplier");
 
 class PurchaseOrder extends Model {}
 
@@ -34,15 +35,22 @@ PurchaseOrder.init(
   },
 );
 
+// join between user and purchase order
 PurchaseOrder.belongsTo(User, {
-  foreignKey: "created_by",
   onUpdate: "CASCADE",
   onDelete: "RESTRICT",
 });
 
-User.hasMany(PurchaseOrder, {
-  foreignKey: "created_by",
-  as: "purchase_orders",
+User.hasMany(PurchaseOrder);
+
+// join between supplier and purchase order
+PurchaseOrder.belongsTo(Supplier, {
+  onUpdate: "CASCADE",
+  onDelete: "RESTRICT",
 });
+
+Supplier.hasMany(PurchaseOrder);
+
+// PurchaseOrder.sync({ alter: true });
 
 module.exports = PurchaseOrder;

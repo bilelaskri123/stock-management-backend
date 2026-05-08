@@ -16,6 +16,8 @@ class PurchaseOrderService {
   }
 
   async createPurchaseOrder(purchaseOrderData) {
+    console.log(purchaseOrderData);
+
     return await purchaseOrderRepository.create(purchaseOrderData);
   }
 

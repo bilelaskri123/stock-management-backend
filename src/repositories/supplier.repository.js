@@ -38,15 +38,15 @@ class SupplierRepository {
     if (!supplier) {
       throw new Error("Supplier not found");
     }
-    return await Supplier.update(SupplierData);
+    return await supplier.update(SupplierData);
   }
 
   async delete(id) {
     const supplier = await Supplier.findByPk(id);
     if (!supplier) {
-      throw new Error("Supplier not found");
+      return false;
     }
-    await Supplier.destroy();
+    await supplier.destroy();
     return true;
   }
 }

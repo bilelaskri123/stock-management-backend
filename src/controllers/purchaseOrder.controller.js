@@ -1,4 +1,8 @@
 const purchaseOrderService = require("../services/purchaseOrder.service");
+const {
+  createPurchaseOrderSchema,
+  updatePurchaseOrderSchema,
+} = require("../validators/purchaseOrder.validator");
 
 class PurchaseOrderController {
   async getAll(req, res, next) {
@@ -67,12 +71,10 @@ class PurchaseOrderController {
     try {
       const purchaseOrderId = req.params.id;
       await purchaseOrderService.deletePurchaseOrder(purchaseOrderId);
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: "Purchase Order deleted successfully",
-        });
+      res.status(200).json({
+        success: true,
+        message: "Purchase Order deleted successfully",
+      });
     } catch (error) {
       next(error);
     }

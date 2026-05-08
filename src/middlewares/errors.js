@@ -5,6 +5,8 @@ const notFoundHandler = (req, res, next) => {
 };
 
 const errorHandler = (err, req, res, next) => {
+  console.log(err);
+
   // Sequelize validation error
   if (err.name === "SequelizeValidationError") {
     const messages = err.errors.map((e) => e.message);

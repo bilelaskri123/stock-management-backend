@@ -14,7 +14,7 @@ class PurchaseOrderRepository {
       : {};
     const { count, rows } = await PurchaseOrder.findAndCountAll({
       where,
-      include: Supplier,
+      include: { model: Supplier },
       limit,
       offset,
       order: [["createdAt", "DESC"]],
@@ -28,7 +28,9 @@ class PurchaseOrderRepository {
   }
 
   async findById(id) {
-    return await PurchaseOrder.findByPk(id, { include: Supplier });
+    return await PurchaseOrder.findByPk(id, {
+      include: { model: Supplier },
+    });
   }
 
   async create(PurchaseOrderData) {
@@ -40,15 +42,15 @@ class PurchaseOrderRepository {
     if (!purchaseOrder) {
       throw new Error("PurchaseOrder not found");
     }
-    return await PurchaseOrder.update(PurchaseOrderData);
+    return await purchaseOrder.update(PurchaseOrderData);
   }
 
   async delete(id) {
     const purchaseOrder = await PurchaseOrder.findByPk(id);
     if (!purchaseOrder) {
-      throw new Error("PurchaseOrder not found");
+      return false;
     }
-    await PurchaseOrder.destroy();
+    await purchaseOrder.destroy();
     return true;
   }
 }
