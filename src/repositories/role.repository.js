@@ -1,11 +1,14 @@
 const Role = require("../models/Role");
+const Permission = require("../models/Permission");
 class RoleRepository {
   async findAll() {
     return await Role.findAll();
   }
 
   async findById(id) {
-    return await Role.findByPk(id);
+    return await Role.findByPk(id, {
+      include: { model: Permission, through: { attributes: [] } },
+    });
   }
 
   async create(roleData) {

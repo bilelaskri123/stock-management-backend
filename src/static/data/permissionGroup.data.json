@@ -6,5 +6,20 @@
   {
     "name": "Role Management",
     "key": "role_management"
+  },
+  {
+    "name": "Warehouse Management",
+    "key": "warehouse_management"  
+  },
+  {
+    "name": "Supplier Management",
+    "key": "supplier_management"
+  },
+  {
+    "name": "Purchase Order Management",
+    "key": "purchase_order_management"
+  },
+  {
+    
   }
 ]
