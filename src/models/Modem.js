@@ -51,4 +51,6 @@ Modem.belongsTo(PurchaseOrder, {
 
 PurchaseOrder.hasMany(Modem);
 
+// Modem.sync({ alter: true });
+
 module.exports = Modem;
