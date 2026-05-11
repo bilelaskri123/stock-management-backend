@@ -6,6 +6,7 @@ const authRoutes = require("./auth.routes");
 const warehouseRoutes = require("./warehouse.routes");
 const supplierRoutes = require("./supplier.routes");
 const purchaseOrderRoutes = require("./purchaseOrder.routes");
+const purchaseOrderHistoryRoutes = require("./purchaseOrderHistory.routes");
 
 const router = Router();
 router.use("/users", userRoutes);
@@ -15,5 +16,6 @@ router.use("/auth", authRoutes);
 router.use("/warehouses", warehouseRoutes);
 router.use("/suppliers", supplierRoutes);
 router.use("/purchase-orders", purchaseOrderRoutes);
+router.use("/purchase-order-history", purchaseOrderHistoryRoutes);
 
 module.exports = router;

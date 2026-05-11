@@ -23,7 +23,10 @@ PurchaseOrderHistory.init(
     status: {
       type: DataTypes.ENUM,
       values: ["created", "partial delivered", "completely delivered"],
-      defaultValue: "created",
+    },
+    action: {
+      type: DataTypes.ENUM,
+      values: ["create", "update"],
     },
   },
   {
@@ -56,5 +59,7 @@ PurchaseOrder.hasMany(PurchaseOrderHistory, {
   foreignKey: "purchase_order",
   as: "purchase_orders",
 });
+
+// PurchaseOrderHistory.sync({ alter: true });
 
 module.exports = PurchaseOrderHistory;
