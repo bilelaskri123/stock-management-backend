@@ -44,10 +44,25 @@ class PurchaseOrderService {
       throw new AppError("Purchase Order not found", 404);
     }
 
-    return await purchaseOrderRepository.update(
+    const savedPurchaseOrder = await purchaseOrderRepository.update(
       purchaseOrderId,
       purchaseOrderData,
     );
+
+    const purchaseOrderHistoryData = {
+      quantity_received: savedPurchaseOrder.quantity_received,
+      quantity_ordered: savedPurchaseOrder.quantity_ordered,
+      status: savedPurchaseOrder.status,
+      action: "update",
+      purchase_order: savedPurchaseOrder.id,
+      created_by: savedPurchaseOrder.UserId,
+    };
+
+    await purchaseOrderHistoryService.createPurchaseOrderHistory(
+      purchaseOrderHistoryData,
+    );
+
+    return savedPurchaseOrder;
   }
 
   async deletePurchaseOrder(purchaseOrderId) {

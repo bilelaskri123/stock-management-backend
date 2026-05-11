@@ -3,10 +3,10 @@ const PurchaseOrder = require("../models/PurchaseOrder");
 const User = require("../models/User");
 
 class PurchaseOrderHistoryRepository {
-  async findAll({ page = 1, limit = 10, search = "" }) {
+  async findAll({ page = 1, limit = 10, purchaseOrder }) {
     const offset = (page - 1) * limit;
     const where = {
-      purchase_order: search,
+      purchase_order: purchaseOrder,
     };
     const { count, rows } = await PurchaseOrderHistory.findAndCountAll({
       where,

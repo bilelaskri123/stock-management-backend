@@ -3,17 +3,17 @@ const purchaseOrderHistoryService = require("../services/purchaseOrderHistory.se
 class PurchaseOrderHistoryController {
   async getAll(req, res, next) {
     try {
-      const { page, limit, search } = req.query;
-      if (!search) {
+      const { page, limit, purchaseOrder } = req.query;
+      if (!purchaseOrder) {
         return res
           .status(400)
-          .json({ success: false, error: "missing search query" });
+          .json({ success: false, error: "missing purchase order query" });
       }
       const purchaseOrderHistories =
         await purchaseOrderHistoryService.getAllPurchaseOrderHistories({
           page,
           limit,
-          search,
+          purchaseOrder,
         });
       res.status(200).json({ success: true, purchaseOrderHistories });
     } catch (error) {
