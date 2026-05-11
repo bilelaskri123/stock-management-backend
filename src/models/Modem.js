@@ -5,19 +5,19 @@ const PurchaseOrder = require("./PurchaseOrder");
 
 class Modem extends Model {}
 
-Model.init(
+Modem.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    mac_address: {
+    mac: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
     },
-    serial_number: {
+    sn: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
