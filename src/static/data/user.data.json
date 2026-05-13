@@ -3,5 +3,5 @@
     "lastName": "Ben Miled",
     "email": "bilel.benmiled@example.com",
     "password": "password123",
-    "role_id": 1
+    "roleId": 1
 }

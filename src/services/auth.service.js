@@ -1,4 +1,5 @@
 const userRepository = require("../repositories/user.repository");
+const roleRepository = require("../repositories/role.repository");
 const jwt = require("jsonwebtoken");
 const { AppError } = require("../utils/AppError");
 class AuthService {
@@ -14,10 +15,13 @@ class AuthService {
       throw new AppError("Invalid email or password", 401);
     }
 
+    const role = await roleRepository.findById(user.RoleId);
+    const permissions = role.Permissions.map((permission) => permission.key);
+
     // generate token (e.g., JWT) and return it along with user info
     const token = this.generateToken(user);
 
-    return { message: "Login successful", user, token };
+    return { message: "Login successful", user, token, permissions };
   }
 
   // Generate JWT token (if needed, can be implemented here or in a separate auth service)
