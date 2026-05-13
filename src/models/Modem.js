@@ -25,6 +25,7 @@ Modem.init(
     status: {
       type: DataTypes.ENUM,
       values: ["free", "returned", "damaged", "saled", "on_delivery"],
+      defaultValue: "free",
     },
   },
   {
@@ -33,6 +34,7 @@ Modem.init(
     tableName: "modems",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 
@@ -49,8 +51,8 @@ Modem.belongsTo(PurchaseOrder, {
   onDelete: "RESTRICT",
 });
 
-PurchaseOrder.hasMany(Modem);
-
-// Modem.sync({ alter: true });
+PurchaseOrder.hasMany(Modem, {
+  foreignKey: "purchase_order",
+});
 
 module.exports = Modem;

@@ -32,6 +32,7 @@ PurchaseOrder.init(
     tableName: "purchase_orders",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 
@@ -50,7 +51,5 @@ PurchaseOrder.belongsTo(Supplier, {
 });
 
 Supplier.hasMany(PurchaseOrder);
-
-// PurchaseOrder.sync({ alter: true });
 
 module.exports = PurchaseOrder;

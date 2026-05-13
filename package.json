@@ -1,17 +1,18 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "stock management system",
   "main": "server.js",
   "scripts": {
     "start": "node --env-file .env server.js",
     "start:dev": "node --watch --env-file .env server.js",
+    "init-data": "node --env-file .env src/scripts/initial-data.script",
     "start:docker": "node server.js",
     "test": "jest --runInBand",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [],
+  "keywords": ["nodejs", "expressjs", "postgres", "sequelize"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",

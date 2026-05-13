@@ -38,5 +38,115 @@
         "name": "View Role",
         "key": "view_role",
         "groupKey": "role_management"
+    },
+    {
+        "name": "Create Warehouse",
+        "key": "create_warehouse",
+        "groupKey": "warehouse_management"
+    },
+    {
+        "name": "Edit Warehouse",
+        "key": "edit_warehouse",
+        "groupKey": "warehouse_management"
+    },
+    {
+        "name": "Delete Warehouse",
+        "key": "delete_warehouse",
+        "groupKey": "warehouse_management"
+    },
+    {
+        "name": "View Warehouse",
+        "key": "view_warehouse",
+        "groupKey": "warehouse_management"
+    },
+    {
+        "name": "Create Supplier",
+        "key": "create_supplier",
+        "groupKey": "supplier_management"
+    },
+    {
+        "name": "Edit Supplier",
+        "key": "edit_supplier",
+        "groupKey": "supplier_management"
+    },
+    {
+        "name": "Delete Supplier",
+        "key": "delete_supplier",
+        "groupKey": "supplier_management"
+    },
+    {
+        "name": "View Supplier",
+        "key": "view_supplier",
+        "groupKey": "supplier_management"
+    },
+    {
+        "name": "Create Purchase Order",
+        "key": "create_purchase_order",
+        "groupKey": "purchase_order_management"
+    },
+    {
+        "name": "Edit Purchase Order",
+        "key": "edit_purchase_order",
+        "groupKey": "purchase_order_management"
+    },
+    {
+        "name": "Delete Purchase Order",
+        "key": "delete_purchase_order",
+        "groupKey": "purchase_order_management"
+    },
+    {
+        "name": "View Purchase Order",
+        "key": "view_purchase_order",
+        "groupKey": "purchase_order_management"
+    },
+    {
+        "name": "Create Modem",
+        "key": "create_modem",
+        "groupKey": "modem_management"
+    },
+    {
+        "name": "Edit Modem",
+        "key": "edit_modem",
+        "groupKey": "modem_management"
+    },
+    {
+        "name": "Delete Modem",
+        "key": "delete_modem",
+        "groupKey": "modem_management"
+    },
+    {
+        "name": "View Modem",
+        "key": "view_modem",
+        "groupKey": "modem_management"
+    },
+    {
+        "name": "Create Stock Movement",
+        "key": "create_stock_movement",
+        "groupKey": "stock_movement_management"
+    },
+    {
+        "name": "Edit Stock Movement",
+        "key": "edit_stock_movement",
+        "groupKey": "stock_movement_management"
+    },
+    {
+        "name": "Delete Stock Movement",
+        "key": "delete_stock_movement",
+        "groupKey": "stock_movement_management"
+    },
+    {
+        "name": "View Stock Movement",
+        "key": "view_stock_movement",
+        "groupKey": "stock_movement_management"
+    },
+    {
+        "name": "View Stock History",
+        "key": "view_stock_history",
+        "groupKey": "stock_history_management"
+    },
+    {
+        "name": "View Sales Order",
+        "key": "view_sales_order",
+        "groupKey": "sales_order_management"
     }
 ]

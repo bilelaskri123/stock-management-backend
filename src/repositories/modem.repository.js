@@ -17,7 +17,7 @@ class ModemRepository {
       : {};
     const { count, rows } = await Modem.findAndCountAll({
       where,
-      include: [{ model: Modem }, { model: Warehouse }],
+      include: [{ model: PurchaseOrder }, { model: Warehouse }],
       limit,
       offset,
       order: [["createdAt", "DESC"]],
@@ -32,7 +32,7 @@ class ModemRepository {
 
   async findById(id) {
     return await Modem.findByPk(id, {
-      include: [{ model: Modem }, { model: Warehouse }],
+      include: [{ model: PurchaseOrder }, { model: Warehouse }],
     });
   }
 

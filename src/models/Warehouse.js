@@ -22,6 +22,14 @@ Warehouse.init(
       type: DataTypes.ENUM,
       values: ["physique", "logic"],
     },
+    min_stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {
+        min: 0,
+      },
+    },
   },
   {
     sequelize,
@@ -29,6 +37,7 @@ Warehouse.init(
     tableName: "warehouses",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 

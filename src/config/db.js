@@ -21,7 +21,10 @@ async function connectToDB() {
   try {
     await ensureDatabaseExists();
     await sequelize.authenticate();
-    // await sequelize.sync(); // Sync models to the database
+    const tables = await sequelize.getQueryInterface().showAllTables();
+    if (tables.length === 0) {
+      await sequelize.sync({ alter: true }); // Sync models to the database
+    }
     console.log(
       "Connection to the database has been established successfully.",
     );

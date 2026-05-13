@@ -102,7 +102,7 @@ StockMovement.belongsTo(Modem, {
   targetKey: "id",
 });
 
-StockMovement.sync({ alter: true });
+// StockMovement.sync({ alter: true });
 
 module.exports = StockMovement;
 

@@ -7,7 +7,7 @@ class ModemService {
   }
 
   async getModemById(modemId) {
-    const modem = await modemRepository.findById(modem);
+    const modem = await modemRepository.findById(modemId);
     if (!modem) {
       throw new AppError("Modem not found", 404);
     }

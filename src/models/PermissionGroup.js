@@ -26,6 +26,7 @@ PermissionGroup.init(
     tableName: "permission_groups",
     paranoid: true, // Enable soft deletes
     timestamps: true, // Enable createdAt and updatedAt
+    underscored: true,
   },
 );
 

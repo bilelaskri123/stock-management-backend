@@ -26,6 +26,7 @@ ResetPassword.init(
     tableName: "reset_passwords",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 

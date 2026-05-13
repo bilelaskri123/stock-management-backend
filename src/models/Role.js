@@ -26,6 +26,7 @@ Role.init(
     tableName: "roles",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 

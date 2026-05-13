@@ -35,6 +35,7 @@ PurchaseOrderHistory.init(
     tableName: "purchase_order_histories",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 

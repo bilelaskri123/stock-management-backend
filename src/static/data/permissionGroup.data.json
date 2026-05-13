@@ -20,6 +20,19 @@
     "key": "purchase_order_management"
   },
   {
-    
+    "name": "Modem Management",
+    "key": "modem_management"
+  },
+  {
+    "name": "Stock Movement Management",
+    "key": "stock_movement_management"  
+  },
+  {
+    "name": "Stock History Management",
+    "key": "stock_history_management"
+  },
+  {
+    "name": "Sales Order Management",
+    "key": "sales_order_management"
   }
 ]

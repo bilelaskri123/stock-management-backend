@@ -29,6 +29,7 @@ Supplier.init(
     tableName: "suppliers",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 

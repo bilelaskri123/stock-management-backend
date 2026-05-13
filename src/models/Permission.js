@@ -26,6 +26,7 @@ Permission.init(
     tableName: "permissions",
     paranoid: true,
     timestamps: true,
+    underscored: true,
   },
 );
 
