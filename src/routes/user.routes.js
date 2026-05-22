@@ -4,8 +4,6 @@ const permission = require("../middlewares/permission.middleware");
 
 const router = Router();
 
-// define routes
-
 router.get("/", permission("view_user"), userController.getAll);
 router.get("/:id", permission("view_user"), userController.getById);
 router.post("/", permission("create_user"), userController.create);

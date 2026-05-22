@@ -105,35 +105,3 @@ StockMovement.belongsTo(Modem, {
 // StockMovement.sync({ alter: true });
 
 module.exports = StockMovement;
-
-// Create a stock movement between two warehouses
-// await StockMovement.create({
-//   quantity:          150,
-//   moved_at:          new Date(),
-//   from_warehouse_id: 1,              // leaving warehouse #1
-//   to_warehouse_id:   2               // arriving at warehouse #2
-// });
-
-// // Fetch movement with both warehouses populated
-// const movement = await StockMovement.findOne({
-//   where:   { movement_id: 1 },
-//   include: [
-//     { model: Warehouse, as: 'fromWarehouse' },
-//     { model: Warehouse, as: 'toWarehouse'   }
-//   ]
-// });
-
-// console.log(movement.fromWarehouse.name);  // "Warehouse A"
-// console.log(movement.toWarehouse.name);    // "Warehouse B"
-
-// // Fetch a warehouse with all its incoming & outgoing movements
-// const warehouse = await Warehouse.findOne({
-//   where:   { warehouse_id: 1 },
-//   include: [
-//     { model: StockMovement, as: 'outgoingMovements' },
-//     { model: StockMovement, as: 'incomingMovements' }
-//   ]
-// });
-
-// console.log(warehouse.outgoingMovements);  // movements where from_warehouse_id = 1
-// console.log(warehouse.incomingMovements);  // movements where to_warehouse_id   = 1

@@ -5,7 +5,7 @@ const roleRepository = require("../repositories/role.repository");
 module.exports = (permission) => {
   return async (req, res, next) => {
     try {
-      console.log(permission);
+      console.log(req.headers);
       const token = req.headers["authorization"]?.split(" ")[1];
       if (!token) {
         return res
