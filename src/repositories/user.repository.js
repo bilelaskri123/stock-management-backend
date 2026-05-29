@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const User = require("../models/User");
+const Role = require("../models/Role");
 
 class UserRepository {
   async findAll({ page = 1, limit = 10, search = "" }) {
@@ -15,6 +16,7 @@ class UserRepository {
       : {};
     const { count, rows } = await User.findAndCountAll({
       where,
+      include: { model: Role, attributes: ["id", "name"] },
       limit,
       offset,
       order: [["createdAt", "DESC"]],
@@ -32,7 +34,10 @@ class UserRepository {
   }
 
   async findByEmail(email) {
-    return await User.findOne({ where: { email } });
+    return await User.findOne({
+      where: { email },
+      include: { model: Role, attributes: ["id", "name"] },
+    });
   }
 
   async create(userData) {

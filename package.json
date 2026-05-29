@@ -12,7 +12,12 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage"
   },
-  "keywords": ["nodejs", "expressjs", "postgres", "sequelize"],
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "postgres",
+    "sequelize"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
