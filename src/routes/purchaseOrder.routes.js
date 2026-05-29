@@ -1,11 +1,32 @@
 const { Router } = require("express");
 const purchaseOrderController = require("../controllers/purchaseOrder.controller");
+const permission = require("../middlewares/permission.middleware");
 const router = Router();
 
-router.get("/", purchaseOrderController.getAll);
-router.get("/:id", purchaseOrderController.getById);
-router.post("/", purchaseOrderController.create);
-router.put("/:id", purchaseOrderController.update);
-router.delete("/:id", purchaseOrderController.delete);
+router.get(
+  "/",
+  permission("view_purchase_order"),
+  purchaseOrderController.getAll,
+);
+router.get(
+  "/:id",
+  permission("view_purchase_order"),
+  purchaseOrderController.getById,
+);
+router.post(
+  "/",
+  permission("create_purchase_order"),
+  purchaseOrderController.create,
+);
+router.put(
+  "/:id",
+  permission("edit_purchase_order"),
+  purchaseOrderController.update,
+);
+router.delete(
+  "/:id",
+  permission("delete_purchase_order"),
+  purchaseOrderController.delete,
+);
 
 module.exports = router;

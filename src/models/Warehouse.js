@@ -41,5 +41,5 @@ Warehouse.init(
   },
 );
 
-Warehouse.sync({ alter: true });
+// Warehouse.sync({ alter: true });
 module.exports = Warehouse;

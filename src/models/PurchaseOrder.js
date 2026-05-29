@@ -40,16 +40,24 @@ PurchaseOrder.init(
 PurchaseOrder.belongsTo(User, {
   onUpdate: "CASCADE",
   onDelete: "RESTRICT",
+  foreignKey: "created_by",
 });
 
-User.hasMany(PurchaseOrder);
+User.hasMany(PurchaseOrder, {
+  foreignKey: "created_by",
+});
 
 // join between supplier and purchase order
 PurchaseOrder.belongsTo(Supplier, {
   onUpdate: "CASCADE",
   onDelete: "RESTRICT",
+  foreignKey: "supplier_id",
 });
 
-Supplier.hasMany(PurchaseOrder);
+Supplier.hasMany(PurchaseOrder, {
+  foreignKey: "supplier_id",
+});
+
+// PurchaseOrder.sync({ alter: true });
 
 module.exports = PurchaseOrder;

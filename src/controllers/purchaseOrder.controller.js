@@ -31,6 +31,7 @@ class PurchaseOrderController {
   }
 
   async create(req, res, next) {
+    console.log(req.user);
     try {
       const { success, error, data } = createPurchaseOrderSchema.safeParse(
         req.body,
@@ -39,8 +40,11 @@ class PurchaseOrderController {
         const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
         return res.status(400).json({ success: false, error: message });
       }
-      const newPurchaseOrder =
-        await purchaseOrderService.createPurchaseOrder(data);
+      const newPurchaseOrder = await purchaseOrderService.createPurchaseOrder({
+        ...data,
+        supplier_id: data.SupplierId,
+        created_by: req.user.id,
+      });
       res.status(201).json({ success: true, purchaseOrder: newPurchaseOrder });
     } catch (error) {
       next(error);

@@ -18,6 +18,7 @@ module.exports = (permission) => {
       if (!permissions.includes(permission)) {
         return res.status(403).json({ error: "unauthorized" });
       }
+      req.user = decodedToken;
       next();
     } catch (error) {
       return res.status(401).json({ error: "auth failed" });
