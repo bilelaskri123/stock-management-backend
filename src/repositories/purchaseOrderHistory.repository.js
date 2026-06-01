@@ -1,5 +1,6 @@
 const PurchaseOrderHistory = require("../models/PurchaseOrderHistory");
 const PurchaseOrder = require("../models/PurchaseOrder");
+const Supplier = require("../models/Supplier");
 const User = require("../models/User");
 
 class PurchaseOrderHistoryRepository {
@@ -10,10 +11,31 @@ class PurchaseOrderHistoryRepository {
     };
     const { count, rows } = await PurchaseOrderHistory.findAndCountAll({
       where,
-      include: [{ model: PurchaseOrder }, { model: User }],
+      include: [
+        {
+          model: PurchaseOrder,
+          attributes: [
+            "id",
+            "quantity_ordered",
+            "quantity_received",
+            "status",
+            "createdAt",
+          ],
+          include: [{ model: Supplier, attributes: ["id", "name"] }],
+        },
+        { model: User, attributes: ["id", "firstName", "lastName"] },
+      ],
       limit,
       offset,
       order: [["createdAt", "DESC"]],
+      attributes: [
+        "id",
+        "quantity_ordered",
+        "quantity_received",
+        "status",
+        "action",
+        "createdAt",
+      ],
     });
     return {
       total: count,
@@ -25,7 +47,10 @@ class PurchaseOrderHistoryRepository {
 
   async findById(id) {
     return await PurchaseOrderHistory.findByPk(id, {
-      include: [{ model: PurchaseOrder }, { model: User }],
+      include: [
+        { model: PurchaseOrder, include: [{ model: Supplier }] },
+        { model: User },
+      ],
     });
   }
 
