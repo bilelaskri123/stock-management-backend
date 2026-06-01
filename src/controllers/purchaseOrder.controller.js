@@ -42,7 +42,7 @@ class PurchaseOrderController {
       }
       const newPurchaseOrder = await purchaseOrderService.createPurchaseOrder({
         ...data,
-        supplier_id: data.SupplierId,
+        supplier_id: data.supplier_id,
         created_by: req.user.id,
       });
       res.status(201).json({ success: true, purchaseOrder: newPurchaseOrder });

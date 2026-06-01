@@ -20,7 +20,7 @@ class PurchaseOrderService {
   async createPurchaseOrder(purchaseOrderData) {
     // check if the supplier exists
     const supplier = await supplierService.getSupplierById(
-      purchaseOrderData.SupplierId,
+      purchaseOrderData.supplier_id,
     );
     const purchaseOrder =
       await purchaseOrderRepository.create(purchaseOrderData);

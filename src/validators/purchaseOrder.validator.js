@@ -2,7 +2,7 @@ const { z } = require("zod");
 
 const createPurchaseOrderSchema = z.object({
   quantity_ordered: z.number().min(0),
-  SupplierId: z.number(),
+  supplier_id: z.number(),
   quantity_received: z.number().min(0).optional(),
   status: z
     .enum(["created", "partial delivered", "completely delivered"])
