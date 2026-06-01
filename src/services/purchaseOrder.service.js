@@ -1,5 +1,6 @@
 const purchaseOrderRepository = require("../repositories/purchaseOrder.repository");
 const purchaseOrderHistoryService = require("./purchaseOrderHistory.service");
+const supplierService = require("./supplier.service");
 const { AppError } = require("../utils/AppError");
 
 class PurchaseOrderService {
@@ -17,7 +18,10 @@ class PurchaseOrderService {
   }
 
   async createPurchaseOrder(purchaseOrderData) {
-    // add purchase order history
+    // check if the supplier exists
+    const supplier = await supplierService.getSupplierById(
+      purchaseOrderData.SupplierId,
+    );
     const purchaseOrder =
       await purchaseOrderRepository.create(purchaseOrderData);
 
