@@ -31,7 +31,7 @@ class PurchaseOrderService {
       status: purchaseOrder.status,
       action: "create",
       purchase_order: purchaseOrder.id,
-      created_by: purchaseOrder.UserId,
+      created_by: purchaseOrder.created_by,
     };
 
     await purchaseOrderHistoryService.createPurchaseOrderHistory(
@@ -59,7 +59,7 @@ class PurchaseOrderService {
       status: savedPurchaseOrder.status,
       action: "update",
       purchase_order: savedPurchaseOrder.id,
-      created_by: savedPurchaseOrder.UserId,
+      created_by: savedPurchaseOrder.created_by,
     };
 
     await purchaseOrderHistoryService.createPurchaseOrderHistory(

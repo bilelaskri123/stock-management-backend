@@ -58,6 +58,4 @@ Supplier.hasMany(PurchaseOrder, {
   foreignKey: "supplier_id",
 });
 
-PurchaseOrder.sync({ alter: true });
-
 module.exports = PurchaseOrder;
