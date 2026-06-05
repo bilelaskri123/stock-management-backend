@@ -27,6 +27,11 @@ Modem.init(
       values: ["free", "returned", "damaged", "saled", "on_delivery"],
       defaultValue: "free",
     },
+    type: {
+      type: DataTypes.ENUM,
+      values: ["XDSL", "GPON"],
+      allowNull: false,
+    },
   },
   {
     sequelize,

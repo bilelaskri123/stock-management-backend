@@ -31,7 +31,6 @@ class PurchaseOrderController {
   }
 
   async create(req, res, next) {
-    console.log(req.user);
     try {
       const { success, error, data } = createPurchaseOrderSchema.safeParse(
         req.body,
@@ -57,6 +56,7 @@ class PurchaseOrderController {
       const { success, error, data } = updatePurchaseOrderSchema.safeParse(
         req.body,
       );
+
       if (!success) {
         const message = `${error.issues[0].path[0]} ${error.issues[0].message}`;
         return res.status(400).json({ success: false, error: message });
